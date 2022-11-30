@@ -5,7 +5,7 @@
     "serve-lambda" : "SECRET=42 netlify-lambda serve src/lambda",
     "serve-vite" : "vite",
     "dev": "SECRET=42 netlify-lambda-serve src/lambda & vite",
-    "build": "vite build & netlify-lambda build",
+    "build": "vite build & netlify-lambda build src/lambda",
     "serve": "SECRET=42 netlify-lambda serve src/lambda & vite"
   },
   "devDependencies": {
