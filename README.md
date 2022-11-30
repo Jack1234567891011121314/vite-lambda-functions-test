@@ -1,20 +1,35 @@
-# Vite ⚡
+# Getting Started
 
-> Next Generation Frontend Tooling
+This template is designed to let you try running BOTH a vite server AND a lambda function server simultaneously.
 
-- 💡 Instant Server Start
-- ⚡️ Lightning Fast HMR
-- 🛠️ Rich Features
-- 📦 Optimized Build
-- 🔩 Universal Plugin Interface
-- 🔑 Fully Typed APIs
+The lambda functions run ON A SERVER. Therefore, they can access SECRETS (which you don't want to expose to your end users). Also, they use NODE, which is SERVER-SIDE JavaScript and therefore doesn't have access to browser APIs such as windows, elements, and so on.
 
-Vite (French word for "fast", pronounced `/vit/`) is a new breed of frontend build tool that significantly improves the frontend development experience. It consists of two major parts:
+Open two separate terminals to fire each one up independently...
 
-- A dev server that serves your source files over [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), with [rich built-in features](https://vitejs.dev/guide/features.html) and astonishingly fast [Hot Module Replacement (HMR)](https://vitejs.dev/guide/features.html#hot-module-replacement).
+1. Fire up the lambda function server on port 9000
+npm run serve-lambda
 
-- A [build command](https://vitejs.dev/guide/build.html) that bundles your code with [Rollup](https://rollupjs.org), pre-configured to output highly optimized static assets for production.
+2. Fire up the vite process to serve HTML...
+npm run serve-vite
 
-In addition, Vite is highly extensible via its [Plugin API](https://vitejs.dev/guide/api-plugin.html) and [JavaScript API](https://vitejs.dev/guide/api-javascript.html) with full typing support.
+3. Open the vite port (4173). Assuming everything works correctly, you should be able to click the test link and see 
+that you have both the vite server AND the lambda server up and running (all paths that start .netlify/functions/ should get
+redirected to the lambda functions)
 
-[Read the Docs to Learn More](https://vitejs.dev).
+## But why?
+What is the point of this repository?
+
+We are making sure that we can 
+
+1. serve vite + lambda functions in a dev environment 
+2. serve up the same through NETLIFY.
+
+Once you have this working well in CODESPACES, you will want to deploy to netlify where you will need to make sure netlify knows about your functions directory.
+
+You will want to set an environmental variable called SECRET in netlify.
+
+When you are done, you will have a function which magically multiplies a number entered by your user by a "secret" number not exposed in JavaScript and returns the product.
+
+Is this secure? Assuming your users can't do long division, yes! But otherwise, no, it's just meant as a demonstration.
+
+In the real world, any server-side task requiring a secret (like verifying who your user is, accessing a database, etc) would require this kind of setup.
