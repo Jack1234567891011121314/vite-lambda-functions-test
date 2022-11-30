@@ -1,0 +1,14 @@
+This template is designed to let you try running BOTH a vite server AND a lambda function server simultaneously.
+
+Open two separate terminals to fire each one up independently...
+
+1. Fire up the lambda function server on port 9000
+npm run serve-lambda
+
+2. Fire up the vite process to serve HTML...
+npm run serve-vite
+
+3. Open the vite port (4173). Assuming everything works correctly, a link to a path starting with
+.netlify/functions/ will get redirected to the lambda function in question!
+
+
