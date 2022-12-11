@@ -1,6 +1,6 @@
 import request from 'request';
 
-export const handler = (event,context, callback){
+export const handler = function(event,context, callback){
     let key = process.env.restdbKey;
     var options = {
         method: 'GET',
